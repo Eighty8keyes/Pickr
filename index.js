@@ -1,3 +1,4 @@
+(function() {
 var numSquares = 6;
 var colors = generateRandomColors(numSquares);
 var squares = document.querySelectorAll(".square");
@@ -105,3 +106,4 @@ function randomColor(){
   var b = Math.floor(Math.random() * 256);
   return "rgb(" + r + ", " + g + ", " + b + ")";
 }
+})();
