@@ -13,6 +13,8 @@ var hardBtn = document.querySelector("#hardBtn");
 easyBtn.addEventListener("click", function(){
   easyBtn.classList.add("selected");
   hardBtn.classList.remove("selected");
+  message.textContent = "";
+  resetButton.textContent = "New Colors";
   numSquares = 3;
   colors = generateRandomColors(numSquares);
   pickedColor = pickColor();
@@ -25,11 +27,15 @@ easyBtn.addEventListener("click", function(){
       squares[i].style.display = "none";
     }
   }
+  h1Background.style.background = "steelblue";
+
 })
 
 hardBtn.addEventListener("click", function(){
   hardBtn.classList.add("selected");
   easyBtn.classList.remove("selected");
+  message.textContent = "";
+  resetButton.textContent = "New Colors";
   numSquares = 6;
   colors = generateRandomColors(numSquares);
   pickedColor = pickColor();
@@ -38,6 +44,8 @@ hardBtn.addEventListener("click", function(){
     squares[i].style.background = colors[i]
     squares[i].style.display = "block";
   }
+  h1Background.style.background = "steelblue";
+
 })
 
 colorDisplay.textContent = pickedColor;
@@ -47,11 +55,13 @@ resetButton.addEventListener("click", function(){
   //pick a new random color from array
   pickedColor = pickColor();
   colorDisplay.textContent = pickedColor;
+  message.textContent = "";
+  this.textContent = "New Colors";
   //change colors of squares
   for (var i = 0; i < squares.length; i++) {
     squares[i].style.background = colors[i]
   }
-  h1Background.style.background = "#232323";
+  h1Background.style.background = "steelblue";
 })
 
 for (var i = 0; i < squares.length; i++) {
@@ -63,9 +73,10 @@ for (var i = 0; i < squares.length; i++) {
     var clickedColor = this.style.background;
     //compare color of square
     if (clickedColor === pickedColor) {
-      message.textContent = "Correct";
+      message.textContent = "Correct!";
       changeColors(clickedColor);
       h1Background.style.background = pickedColor;
+      resetButton.innerHTML = "Play Again?";
       }
     else {
       this.style.background = "#232323";
